@@ -157,7 +157,6 @@ function validateConfig(config: CliConfig): string[] {
 	if (!config.pat) errors.push('--pat (or FIT_PAT env var) is required');
 	if (!config.owner) errors.push('--owner (or FIT_OWNER env var) is required');
 	if (!config.repo) errors.push('--repo (or FIT_REPO env var) is required');
-	if (!config.branch) errors.push('--branch is required');
 	return errors;
 }
 

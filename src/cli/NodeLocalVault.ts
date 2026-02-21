@@ -19,8 +19,10 @@ import { detectNormalizationIssues } from '../util/filePath';
  * Converts a Node.js Buffer to a FileContent with automatic binary detection.
  * Uses the same heuristics as Obsidian's LocalVault (null-byte check + UTF-8 decode).
  */
+const BINARY_DETECTION_SAMPLE_SIZE = 8192; // 8KB - matches LocalVault heuristic
+
 function bufferToFileContent(buffer: Buffer): FileContent {
-	const sample = buffer.subarray(0, Math.min(8192, buffer.length));
+	const sample = buffer.subarray(0, Math.min(BINARY_DETECTION_SAMPLE_SIZE, buffer.length));
 	const hasNullByte = sample.includes(0);
 
 	if (hasNullByte) {
