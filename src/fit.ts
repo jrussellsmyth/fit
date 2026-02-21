@@ -7,7 +7,7 @@
 
 import { LocalStores, FitSettings } from "@main";
 import { FileChange, FileClash, FileStates, LocalClashState, compareFileStates } from "./util/changeTracking";
-import { ILocalVault, VaultError } from "./vault";
+import { ILocalVault } from "./vault";
 import { RemoteGitHubVault } from "./remoteGitHubVault";
 import { fitLogger } from "./logger";
 import { CommitSha } from "./util/hashing";

@@ -14,6 +14,7 @@ import { FileContent } from '../util/contentEncoding';
 import { BlobSha } from '../util/hashing';
 import { computeFileSha1 } from '../util/fileHashUtils';
 import { detectNormalizationIssues } from '../util/filePath';
+import { fitLogger } from '../logger';
 
 /**
  * Converts a Node.js Buffer to a FileContent with automatic binary detection.
@@ -87,6 +88,10 @@ export class NodeLocalVault implements ILocalVault {
 		const trackedPaths = allPaths.filter(p => this.shouldTrackState(p));
 
 		const normalizationInfo = detectNormalizationIssues(trackedPaths, 'node filesystem');
+		fitLogger.log(
+			`... 💾 [NodeLocalVault] Scanned ${Object.keys(state).length} files`,
+			normalizationInfo ? { nfdPaths: normalizationInfo.nfdCount } : undefined
+		);
 
 		const shaResults = await Promise.allSettled(
 			trackedPaths.map(async (p): Promise<[string, BlobSha]> => {
@@ -165,7 +170,7 @@ export class NodeLocalVault implements ILocalVault {
 				await this.removeEmptyDirs(filePath);
 			} catch (error) {
 				// If file doesn't exist, treat as a no-op (already deleted)
-				const err = error as NodeJS.ErrnoException;
+				const err = error as { code?: string };
 				if (err.code !== 'ENOENT') {
 					const message = error instanceof Error ? error.message : String(error);
 					throw VaultError.filesystem(`Failed to delete ${filePath}: ${message}`, { originalError: error });

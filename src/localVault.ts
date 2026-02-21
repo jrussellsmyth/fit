@@ -11,7 +11,7 @@ import { fitLogger } from "./logger";
 import { Base64Content, FileContent } from "./util/contentEncoding";
 import { contentToArrayBuffer, readFileContent } from "./util/obsidianHelpers";
 import { BlobSha } from "./util/hashing";
-import { FilePath, detectNormalizationIssues } from "./util/filePath";
+import { detectNormalizationIssues } from "./util/filePath";
 import { withSlowOperationMonitoring } from "./util/asyncMonitoring";
 import { findSuspiciousCorrespondences } from "./util/pathPattern";
 import { computeFileSha1 } from "./util/fileHashUtils";
