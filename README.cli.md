@@ -4,34 +4,67 @@ A CLI tool for autonomous agent and CI pipeline management of an [Obsidian](http
 
 > **Note:** This is a fork of [joshuakto/fit](https://github.com/joshuakto/fit) extended with a CLI interface. A [pull request](https://github.com/joshuakto/fit/pull/217) has been submitted to the upstream project. Once the upstream maintainer publishes the CLI officially, consider migrating to their package.
 
+## What is FIT?
+
+[FIT (File gIT)](https://obsidian.md/plugins?id=fit) syncs your Obsidian vault across mobile and desktop devices using GitHub as a backend. The CLI exposes this functionality outside of the Obsidian app environment, enabling:
+
+- Automation scripts
+- CI/CD pipelines
+- Autonomous agent workflows (e.g. AI agents reading/writing vault notes)
+
 ## Installation
 
 ```bash
 npm install -g @jrussellsmyth/fit-cli
 ```
 
-## Usage
+### Usage
 
 ```bash
-fit-cli --help
+# Show help
+fit-cli help
+
+# Check pending changes (dry-run, machine-readable)
+fit-cli status --json
+
+# Sync vault with remote
+fit-li sync
 ```
 
-## What is fit?
+### Configuration
 
-FIT (File gIT) syncs your Obsidian vault across mobile and desktop devices using GitHub as a backend. The CLI exposes this functionality outside of the Obsidian app environment, enabling:
+Options can be supplied as flags, environment variables, or a JSON config file (all three can be combined; flags take highest priority).
 
-- Automation scripts
-- CI/CD pipelines
-- Autonomous agent workflows (e.g. AI agents reading/writing vault notes)
+| Flag | Environment variable | Description |
+|---|---|---|
+| `--vault <path>` | `FIT_VAULT` | Path to the Obsidian vault directory |
+| `--pat <token>` | `FIT_PAT` | GitHub personal access token |
+| `--owner <owner>` | `FIT_OWNER` | GitHub repository owner |
+| `--repo <repo>` | `FIT_REPO` | GitHub repository name |
+| `--branch <branch>` | `FIT_BRANCH` | Branch to sync (default: `main`) |
+| `--device <name>` | `FIT_DEVICE` | Device name used in commit messages |
+| `--config <path>` | `FIT_CONFIG` | Path to a JSON config file |
+| `--state <path>` | _(none)_ | Path to state file (default: `<vault>/.fit-state.json`) |
+| `--json` | _(none)_ | Output results as JSON |
+| `--verbose` | _(none)_ | Enable verbose logging to stderr |
 
-## Configuration
+**Config file** (`~/.fit-cli.json` by default):
 
-The CLI reads the same GitHub token and repository settings used by the Obsidian plugin. Set the following environment variables or pass them as arguments:
+```json
+{
+  "vaultPath": "/path/to/vault",
+  "pat": "ghp_...",
+  "owner": "username",
+  "repo": "vault-repo",
+  "branch": "main",
+  "deviceName": "my-agent"
+}
+```
 
-| Variable | Description |
-|---|---|
-| `GITHUB_TOKEN` | A GitHub personal access token with `repo` scope |
-| `GITHUB_REPO` | The target repository in `owner/repo` format |
+### Sync behaviour
+
+`fit-cli` uses the same sync engine as the Obsidian plugin — conflict detection, `_fit/` staging, and protected path rules all behave identically. State (SHA caches) is persisted to `<vault>/.fit-state.json` by default so that incremental syncs are efficient.
+
 
 ## Links
 
