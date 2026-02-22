@@ -165,7 +165,7 @@ For developers interested in contributing to FIT or understanding its architectu
 
 ## fit-cli: Automation & CI
 
-FIT ships a companion command-line tool, `fit-cli`, that exposes the same sync engine as the Obsidian plugin. It is intended for use in automation workflows and CI/CD pipelines where Obsidian is not running — for example, pre-processing a vault before a build, or scripting vault management with an autonomous agent.
+FIT ships a companion command-line tool, `fit-cli`, that exposes the same sync engine as the Obsidian plugin. It is intended for use in automation workflows and CI/CD pipelines where Obsidian is not running, such as scripting note organization or task management with an autonomous agent.
 
 ### Build
 
