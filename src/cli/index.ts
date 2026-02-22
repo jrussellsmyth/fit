@@ -78,7 +78,7 @@ async function loadState(stateFile: string): Promise<LocalStores> {
 		const raw = await fs.readFile(stateFile, 'utf-8');
 		return { ...defaultState, ...JSON.parse(raw) };
 	} catch (error) {
-		const err = error as { code?: string };
+		const err = error as { code?: string; message?: string };
 		if (err.code === 'ENOENT') return defaultState;
 		throw new Error(`Failed to load state file ${stateFile}: ${err.message}`);
 	}

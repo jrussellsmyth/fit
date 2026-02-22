@@ -87,12 +87,6 @@ export class NodeLocalVault implements ILocalVault {
 		const allPaths = await this.walkDir('');
 		const trackedPaths = allPaths.filter(p => this.shouldTrackState(p));
 
-		const normalizationInfo = detectNormalizationIssues(trackedPaths, 'node filesystem');
-		fitLogger.log(
-			`... 💾 [NodeLocalVault] Scanned ${Object.keys(state).length} files`,
-			normalizationInfo ? { nfdPaths: normalizationInfo.nfdCount } : undefined
-		);
-
 		const shaResults = await Promise.allSettled(
 			trackedPaths.map(async (p): Promise<[string, BlobSha]> => {
 				const content = await this.readFileContent(p);
@@ -108,6 +102,12 @@ export class NodeLocalVault implements ILocalVault {
 				state[p] = sha;
 			}
 		}
+
+		const normalizationInfo = detectNormalizationIssues(trackedPaths, 'node filesystem');
+		fitLogger.log(
+			`... 💾 [NodeLocalVault] Scanned ${Object.keys(state).length} files`,
+			normalizationInfo ? { nfdPaths: normalizationInfo.nfdCount } : undefined
+		);
 
 		return { state };
 	}
