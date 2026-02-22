@@ -12,8 +12,10 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
-
+	"postStartCommand": {
+        // Fix for git status on mounted volumes on macOS
+        "git-status-mounted-mac-fix": "git config --global core.checkStat minimal"
+	},
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
@@ -23,7 +25,7 @@
 				"MermaidChart.vscode-mermaid-chart"
 			]
 		}
-	},
+	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
