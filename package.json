@@ -4,7 +4,7 @@
 	"description": "Minimalist File gIT (FIT) to sync your files across mobile and desktop devices using GitHub.",
 	"main": "main.js",
 	"bin": {
-		"fit": "./fit-cli.cjs"
+		"fit-cli": "./fit-cli.cjs"
 	},
 	"type": "module",
 	"scripts": {
