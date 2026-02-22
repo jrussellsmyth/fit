@@ -1,12 +1,27 @@
 {
-	"name": "fit",
+	"name": "@jrussellsmyth/fit-cli",
 	"version": "1.4.1-cli.1.0",
 	"description": "Minimalist File gIT (FIT) to sync your files across mobile and desktop devices using GitHub.",
+	"keywords": [],
+	"homepage": "https://github.com/jrussellsmyth/fit#readme",
+	"bugs": {
+		"url": "https://github.com/jrussellsmyth/fit/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jrussellsmyth/fit.git"
+	},
+	"license": "MIT",
+	"author": "jrussell.smyth@gmail.com",
+	"type": "cli",
 	"main": "main.js",
 	"bin": {
-		"fit-cli": "./fit-cli.cjs"
+		"fit-cli": "fit-cli.cjs"
 	},
-	"type": "module",
+	"directories": {
+		"doc": "docs",
+		"test": "test"
+	},
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
@@ -25,9 +40,10 @@
 		"start:mobile": "./scripts/mobile-simple.sh",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "MIT",
+	"dependencies": {
+		"@octokit/core": "^7.0.6",
+		"@octokit/plugin-retry": "^8.0.3"
+	},
 	"devDependencies": {
 		"@eslint/js": "^9.39.2",
 		"@stylistic/eslint-plugin": "^5.7.0",
@@ -55,10 +71,6 @@
 		"vitest": "^4.0.8",
 		"wdio-obsidian-reporter": "^2.1.6",
 		"wdio-obsidian-service": "^2.1.6"
-	},
-	"dependencies": {
-		"@octokit/core": "^7.0.6",
-		"@octokit/plugin-retry": "^8.0.3"
 	},
 	"optionalDependencies": {
 		"@wdio/appium-service": "^9.23.0",
