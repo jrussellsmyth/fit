@@ -1,6 +1,6 @@
 {
 	"name": "@jrussellsmyth/fit-cli",
-	"version": "1.4.1-cli.1.0",
+	"version": "1.4.2-0",
 	"description": "Minimalist File gIT (FIT) to sync your files across mobile and desktop devices using GitHub.",
 	"keywords": [],
 	"homepage": "https://github.com/jrussellsmyth/fit#readme",
