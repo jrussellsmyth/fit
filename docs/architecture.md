@@ -25,20 +25,19 @@ graph TB
 
 ## Core Components
 
-### FitPlugin (main.ts) and fit-cli (src/cli/index.ts)
-**Purpose**: Entry points for user interaction
+### FitPlugin (main.ts)
+**Purpose**: Plugin orchestrator and lifecycle manager (interfaces with 👤 user)
+- Manages plugin loading, settings persistence, auto-sync scheduling
+- Coordinates between sync engine and Obsidian UI
+- Handles error recovery and user notifications
 
-- **FitPlugin** (`main.ts`): Plugin orchestrator and lifecycle manager (interfaces with 👤 user)
-  - Manages plugin loading, settings persistence, auto-sync scheduling
-  - Coordinates between sync engine and Obsidian UI
-  - Handles error recovery and user notifications
-
-- **fit-cli** (`src/cli/index.ts`): Command-line entry point (interfaces with 🤖 agent/CI)
-  - Exposes the same sync engine as the plugin via `sync` and `status` subcommands
-  - Config layered from `~/.fit-cli.json` → environment variables → CLI flags
-  - Uses `NodeLocalVault` for filesystem access and `CliNotice` for stderr progress output
-  - State (SHA caches) persisted to `<vault>/.fit-state.json`
-  - Built as a separate CJS bundle (`fit-cli.cjs`) via `npm run cli:build`
+### fit-cli (src/cli/index.ts)
+**Purpose**: Command-line entry point for automation and CI pipelines (interfaces with 🤖 agent/CI)
+- Exposes the same sync engine as the plugin via `sync` and `status` subcommands
+- Config layered from `~/.fit-cli.json` → environment variables → CLI flags
+- Uses `NodeLocalVault` for filesystem access and `CliNotice` for stderr progress output
+- State (SHA caches) persisted to `<vault>/.fit-state.json`
+- Built as a separate CJS bundle (`fit-cli.cjs`) via `npm run cli:build`
 
 ### Vault Abstractions (IVault, ILocalVault)
 **Purpose**: Abstract file operations (read/write) for different storage backends
