@@ -1,6 +1,12 @@
 # FIT
 ![Obsidian Downloads](https://img.shields.io/badge/dynamic/json?logo=obsidian&color=%23483699&label=downloads&query=%24%5B%22fit%22%5D.downloads&url=https%3A%2F%2Fraw.githubusercontent.com%2Fobsidianmd%2Fobsidian-releases%2Fmaster%2Fcommunity-plugin-stats.json)
 
+> **⚠️ This is a fork of [joshuakto/fit](https://github.com/joshuakto/fit).**
+> It adds a CLI interface (`fit-cli`) for automation and autonomous agent workflows.
+> A [pull request](https://github.com/joshuakto/fit/pull/217) has been submitted to the upstream project.
+> For the original Obsidian plugin, see [joshuakto/fit](https://github.com/joshuakto/fit).
+> For the CLI tool, see [`@jrussellsmyth/fit-cli` on npm](https://www.npmjs.com/package/@jrussellsmyth/fit-cli) or [README.cli.md](README.cli.md).
+
 Sync your files across mobile and desktop devices with one click.
 
 ## Community project
