@@ -1,6 +1,6 @@
 # @jrussellsmyth/fit-cli
 
-A CLI tool for autonomous agent and CI pipeline management of an [Obsidian](https://obsidian.md) vault, built on top of [fit](https://github.com/joshuakto/fit).
+A CLI tool for autonomous agent and CI pipeline management of an [Obsidian](https://obsidian.md) vault, built on top of [FIT](https://github.com/joshuakto/fit).
 
 > **Note:** This is a fork of [joshuakto/fit](https://github.com/joshuakto/fit) extended with a CLI interface. A [pull request](https://github.com/joshuakto/fit/pull/217) has been submitted to the upstream project. Once the upstream maintainer publishes the CLI officially, consider migrating to their package.
 
@@ -28,7 +28,7 @@ fit-cli help
 fit-cli status --json
 
 # Sync vault with remote
-fit-li sync
+fit-cli sync
 ```
 
 ### Configuration
