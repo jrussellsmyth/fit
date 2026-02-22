@@ -25,8 +25,8 @@
 import * as fs from 'fs/promises';
 import * as os from 'os';
 import * as path from 'path';
-import { NodeLocalVault } from './NodeLocalVault';
-import { CliNotice } from './CliNotice';
+import { NodeLocalVault } from './nodeLocalVault';
+import { CliNotice } from './cliNotice';
 import { Fit } from '../fit';
 import { FitSync } from '../fitSync';
 import type { FitSettings, LocalStores } from '../../main';
