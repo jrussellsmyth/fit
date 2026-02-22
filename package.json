@@ -1,6 +1,6 @@
 {
 	"name": "@jrussellsmyth/fit-cli",
-	"version": "1.4.6-cli.0",
+	"version": "1.4.7-cli.0",
 	"description": "A CLI tool for autonomous agent and CI pipeline management of an Obsidian (https://obsidian.md) vault, built on top of FIT (https://github.com/joshuakto/fit).",
 	"keywords": [],
 	"homepage": "https://github.com/jrussellsmyth/fit#readme",
